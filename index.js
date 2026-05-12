@@ -16,6 +16,10 @@ navigator.getBattery().then((battery))=> {
             'gradient-color-green'
         );
 
-
+        BPercentage.classList.remove(
+            'animated-green',
+            'animated-red',
+            'green-color'
+        );
     }
 }
