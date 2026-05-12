@@ -55,5 +55,12 @@ navigator.getBattery().then((battery))=> {
             BPercentage.classList.add('green-color');
         }
     }
+    /* Initial Update */
+    updateBattery();
+
+    /* Update When Battery Changes */
+    battery.addEventListener('chargingchange', updateBattery);
+    battery.addEventListener('levelchange', updateBattery);
+};
 
 
