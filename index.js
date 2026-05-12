@@ -64,6 +64,18 @@ navigator.getBattery().then((battery))=> {
 
     /* Initial Update */
     updateBattery();
+    if (level <= 20) {
+        document.body.style.background =
+            "radial-gradient(circle at top, #3b0000, #000)";
+    }
+    else if (level <= 50) {
+        document.body.style.background =
+            "radial-gradient(circle at top, #3b2a00, #000)";
+    }
+    else {
+        document.body.style.background =
+            "radial-gradient(circle at top, #002b15, #000)";
+    }
 
     /* Update When Battery Changes */
     battery.addEventListener('chargingchange', updateBattery);
