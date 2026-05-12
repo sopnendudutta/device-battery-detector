@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 * {
-    font-family: 'Ubuntu', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 :root {
@@ -26,7 +26,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: #000;
     color: #fff;
 }
 
@@ -41,21 +41,24 @@ body {
     position: relative;
     width: 270px;
     height: 240px;
-    background-color: #222;
     padding: 0.5rem 1.5rem;
-    border-radius: 1.5rem;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+
+    background-color: #222;
+    border-radius: 1.5rem;
 }
 
 .Btext {
     margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
 .Bpercentage {
     font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .Bstatus {
@@ -77,21 +80,23 @@ body {
     position: relative;
     width: 75px;
     height: 180px;
+
+    justify-self: flex-start;
+
     background-color: #222;
+    border-radius: 3rem;
 
     box-shadow:
         inset 20px 0 48px hsl(0, 0%, 16%),
         inset -4px 12px 48px hsl(0, 0%, 56%);
-
-    border-radius: 3rem;
-    justify-self: flex-start;
 }
 
 .Blevel {
     position: absolute;
     inset: 2px;
-    border-radius: 3rem;
+
     overflow: hidden;
+    border-radius: 3rem;
 }
 
 .Bliquid {
@@ -101,29 +106,57 @@ body {
     right: 0;
 
     height: 36px;
+
     background: var(--gradient-color-red);
 
     box-shadow:
         inset -10px 0 12px hsla(0, 0%, 0%, 0.1),
         inset 12px 0 12px hsla(0, 0%, 0%, 0.15);
 
-    transition: 0.2s;
+    transition: height 0.4s ease;
 }
 
 .Bliquid::after {
     content: "";
     position: absolute;
 
-    height: 8px;
+    top: -4px;
     left: 0;
     right: 0;
-    top: -4px;
+
+    width: 100%;
+    height: 8px;
 
     margin: 0 auto;
+
     border-radius: 50%;
 
     box-shadow: inset 0 -3px 6px hsla(0, 0%, 0%, 0.2);
 }
+
+/* ================= COLORS ================= */
+
+.gradient-color-red,
+.gradient-color-red::after {
+    background: var(--gradient-color-red);
+}
+
+.gradient-color-orange,
+.gradient-color-orange::after {
+    background: var(--gradient-color-orange);
+}
+
+.gradient-color-yellow,
+.gradient-color-yellow::after {
+    background: var(--gradient-color-yellow);
+}
+
+.gradient-color-green,
+.gradient-color-green::after {
+    background: var(--gradient-color-green);
+}
+
+/* ================= TEXT EFFECTS ================= */
 
 .green-color {
     background: var(--gradient-color-green);
@@ -139,12 +172,17 @@ body {
     animation: animated-low 1.2s infinite alternate;
 }
 
+.green-color,
 .animated-green,
-.animated-red,
-.green-color {
+.animated-red {
+    background-clip: text;
     -webkit-background-clip: text;
+
     color: transparent;
+    -webkit-text-fill-color: transparent;
 }
+
+/* ================= ANIMATIONS ================= */
 
 @keyframes animated-charging {
     0% {
@@ -164,24 +202,4 @@ body {
     100% {
         text-shadow: 0 0 8px hsl(7, 89%, 46%);
     }
-}
-
-.gradient-color-red,
-.gradient-color-red::after {
-    background: var(--gradient-color-red);
-}
-
-.gradient-color-green,
-.gradient-color-green::after {
-    background: var(--gradient-color-green);
-}
-
-.gradient-color-orange,
-.gradient-color-orange::after {
-    background: var(--gradient-color-orange);
-}
-
-.gradient-color-yellow,
-.gradient-color-yellow::after {
-    background: var(--gradient-color-yellow);
 }
