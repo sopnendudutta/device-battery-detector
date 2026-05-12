@@ -55,6 +55,12 @@ navigator.getBattery().then((battery))=> {
             BPercentage.classList.add('green-color');
         }
     }
+    if (!battery.charging) {
+        BStatus.innerHTML = `
+        <i class="ri-time-line"></i>
+        ${Math.floor(level * 1.2)} mins left
+    `;
+    }
 
     /* Initial Update */
     updateBattery();
