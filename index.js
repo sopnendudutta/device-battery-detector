@@ -40,3 +40,20 @@ navigator.getBattery().then((battery))=> {
             }
         }
 
+        /* Battery Colors */
+        if (level <= 20) {
+            BLiquid.classList.add('gradient-color-red');
+
+        } else if (level <= 48) {
+            BLiquid.classList.add('gradient-color-orange');
+
+        } else if (level <= 80) {
+            BLiquid.classList.add('gradient-color-yellow');
+
+        } else {
+            BLiquid.classList.add('gradient-color-green');
+            BPercentage.classList.add('green-color');
+        }
+    }
+
+
