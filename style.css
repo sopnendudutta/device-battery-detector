@@ -155,3 +155,13 @@ Btext {
 .green-color-green::after {
     background: var(--gradient-color-green);
 }
+
+.gradient-color-orange,
+.green-color-orange::after {
+    background: var(--gradient-color-orange);
+}
+
+.gradient-color-yellow,
+.green-color-yellow::after {
+    background: var(--gradient-color-yellow);
+}
