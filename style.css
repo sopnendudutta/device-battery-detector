@@ -26,8 +26,12 @@
 }
 
 body {
-    background-color: #000;
+    background:
+        radial-gradient(circle at top, #1b1b1b, #000);
+
     color: #fff;
+
+    transition: 0.4s;
 }
 
 .battery {
