@@ -233,3 +233,20 @@ body {
         text-shadow: 0 0 8px hsl(7, 89%, 46%);
     }
 }
+
+@keyframes wave {
+    0% {
+        filter: brightness(1);
+        transform: scaleX(1);
+    }
+
+    50% {
+        filter: brightness(1.15);
+        transform: scaleX(1.02);
+    }
+
+    100% {
+        filter: brightness(1);
+        transform: scaleX(1);
+    }
+}
