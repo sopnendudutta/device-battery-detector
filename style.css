@@ -59,3 +59,17 @@ Btext {
     column-gap: 0.3rem;
     font-size: 0.8rem;
 }
+
+.Bstatus i {
+    font-size: 1.25rem;
+}
+
+.Bpill {
+    position: relative;
+    width: 75px;
+    height: 180px;
+    background-color: #222;
+    box-shadow: inset 20px 0 48px hsl(0, 0%, 16%), inset -4px 12px 48px hsl(0, 0%, 56%);
+    border-radius: 3rem;
+    justify-self: flex-start;
+}
