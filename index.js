@@ -30,4 +30,13 @@ navigator.getBattery().then((battery))=> {
 
             BPercentage.classList.add('animated-green');
 
-        } 
+        }
+        else {
+            BStatus.innerHTML = `Not Charging`;
+
+            /* Low Battery */
+            if (level <= 20) {
+                BPercentage.classList.add('animated-red');
+            }
+        }
+
