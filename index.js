@@ -21,5 +21,13 @@ navigator.getBattery().then((battery))=> {
             'animated-red',
             'green-color'
         );
-    }
-}
+        /* Battery Status */
+        if (battery.charging) {
+            BStatus.innerHTML = `
+                <i class="ri-flashlight-fill animated-green"></i>
+                Charging...
+            `;
+
+            BPercentage.classList.add('animated-green');
+
+        } 
