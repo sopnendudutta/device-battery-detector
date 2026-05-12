@@ -160,8 +160,3 @@ Btext {
 .green-color-orange::after {
     background: var(--gradient-color-orange);
 }
-
-.gradient-color-yellow,
-.green-color-yellow::after {
-    background: var(--gradient-color-yellow);
-}
