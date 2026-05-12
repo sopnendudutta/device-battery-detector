@@ -145,3 +145,13 @@ Btext {
         text-shadow: 0 0 8px hsl (7, 89%, 46%);
     }
 }
+
+.gradient-color-red,
+.green-color-red::after {
+    background: var(--gradient-color-red);
+}
+
+.gradient-color-green,
+.green-color-green::after {
+    background: var(--gradient-color-green);
+}
