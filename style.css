@@ -104,3 +104,17 @@ Btext {
     top: -4px;
     border-radius: 50%;
 }
+
+.green-color {
+    background: var(--gradient-color-green);
+}
+
+.animated-green {
+    background: var(--gradient-color-green);
+    animation: animated-charging 1.2s infinite alternate;
+}
+
+.animated-red {
+    background: var(--gradient-color-red);
+    animation: animated-charging 1.2s infinite alternate;
+}
