@@ -2,13 +2,28 @@ const BPercentage = document.querySelector('.Bpercentage');
 const BStatus = document.querySelector('.Bstatus');
 const BLiquid = document.querySelector('.Bliquid');
 
-navigator.getBattery().then((battery))=> {
+async function batteryInit() {
+
+    /* Check API Support */
+    if (!navigator.getBattery) {
+        BPercentage.innerHTML = 'API';
+        BStatus.innerHTML = 'Battery API Not Supported';
+        return;
+    }
+
+    const battery = await navigator.getBattery();
 
     function updateBattery() {
-        /* Battery level*/
-        let level = Math.floor(battery.level * 100);
-        BPercentage.innerHTML = `${level}`;
+
+        /* Battery Level */
+        const level = Math.floor(battery.level * 100);
+
+        BPercentage.innerHTML = `${level}%`;
+
+        /* Battery Height */
         BLiquid.style.height = `${level}%`;
+
+        /* Remove Old Classes */
         BLiquid.classList.remove(
             'gradient-color-red',
             'gradient-color-orange',
@@ -21,24 +36,6 @@ navigator.getBattery().then((battery))=> {
             'animated-red',
             'green-color'
         );
-        /* Battery Status */
-        if (battery.charging) {
-            BStatus.innerHTML = `
-                <i class="ri-flashlight-fill animated-green"></i>
-                Charging...
-            `;
-
-            BPercentage.classList.add('animated-green');
-
-        }
-        else {
-            BStatus.innerHTML = `Not Charging`;
-
-            /* Low Battery */
-            if (level <= 20) {
-                BPercentage.classList.add('animated-red');
-            }
-        }
 
         /* Battery Colors */
         if (level <= 20) {
@@ -54,31 +51,50 @@ navigator.getBattery().then((battery))=> {
             BLiquid.classList.add('gradient-color-green');
             BPercentage.classList.add('green-color');
         }
-    }
-    if (!battery.charging) {
-        BStatus.innerHTML = `
-        <i class="ri-time-line"></i>
-        ${Math.floor(level * 1.2)} mins left
-    `;
+
+        /* Charging Status */
+        if (battery.charging) {
+
+            BStatus.innerHTML = `
+                <i class="ri-flashlight-fill animated-green"></i>
+                Charging
+            `;
+
+            BPercentage.classList.add('animated-green');
+
+        } else {
+
+            BStatus.innerHTML = `
+                <i class="ri-battery-2-line"></i>
+                Discharging
+            `;
+
+            if (level <= 20) {
+                BPercentage.classList.add('animated-red');
+            }
+        }
+
+        /* Dynamic Background */
+        if (level <= 20) {
+            document.body.style.background =
+                "radial-gradient(circle at top, #3b0000, #000)";
+        }
+        else if (level <= 50) {
+            document.body.style.background =
+                "radial-gradient(circle at top, #3b2a00, #000)";
+        }
+        else {
+            document.body.style.background =
+                "radial-gradient(circle at top, #002b15, #000)";
+        }
     }
 
     /* Initial Update */
     updateBattery();
-    if (level <= 20) {
-        document.body.style.background =
-            "radial-gradient(circle at top, #3b0000, #000)";
-    }
-    else if (level <= 50) {
-        document.body.style.background =
-            "radial-gradient(circle at top, #3b2a00, #000)";
-    }
-    else {
-        document.body.style.background =
-            "radial-gradient(circle at top, #002b15, #000)";
-    }
 
-    /* Update When Battery Changes */
-    battery.addEventListener('chargingchange', updateBattery);
+    /* Live Updates */
     battery.addEventListener('levelchange', updateBattery);
-};
+    battery.addEventListener('chargingchange', updateBattery);
+}
 
+batteryInit();
